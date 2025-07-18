@@ -14,13 +14,14 @@ public class Main {
 
         try {
             transaction = session.beginTransaction();
-            Student student = new Student("Melike", "Unsaldi");
+            Student student = new Student("Ayse", "Aaa");
             session.save(student);
 
             Student readStudent = session.get(Student.class, student.getId());
             System.out.println(readStudent.getName());
-            readStudent.setName("ali");
-            session.save(readStudent);
+            //readStudent.setName("ali");
+            //session.save(readStudent);
+            session.delete(readStudent);
 
             transaction.commit();
         }catch (Exception e){
