@@ -14,18 +14,22 @@ public class Main {
 
         try {
             transaction = session.beginTransaction();
-            Student student = new Student("Ayse", "Aaa");
+            Student student = new Student("Melike", "Ünsaldı");
             session.save(student);
 
             Student readStudent = session.get(Student.class, student.getId());
-            System.out.println(readStudent.getName());
+            System.out.println( "ID: " +readStudent.getId() + " name: "+readStudent.getName() + " surname: "+readStudent.getSurname());
             //readStudent.setName("ali");
             //session.save(readStudent);
-            session.delete(readStudent);
+            //session.delete(readStudent);
 
             transaction.commit();
-        }catch (Exception e){
+        }catch (Exception e) {
+            if (transaction != null) transaction.rollback();
+            System.err.println("Transaction geri alındı. Hata:");
             e.printStackTrace();
+        } finally {
+            session.close();
         }
     }
 }
