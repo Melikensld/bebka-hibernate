@@ -20,7 +20,12 @@ public class StudentService {
         Student student = new Student(name, surname);
         return studentDao.createStudent(student);
     }
+
     public List<Student> getAllStudents() {
         return studentDao.getAllStudents();
+    }
+
+    public Student getStudentById(int id) {
+        return studentDao.getStudentById(id);
     }
 }

@@ -19,8 +19,18 @@ public class Main {
         //studentService.createStudent("Berkan", "Sevil");
 
         //getAll
+        /*
         for(Student student : studentService.getAllStudents()) {
             System.out.println(student.getId() + " - " + student.getName() + " " + student.getSurname());
+        }
+         */
+
+        //getStudentById
+        Student getStudentById = studentService.getStudentById(3);
+        if(getStudentById != null) {
+            System.out.println(getStudentById.getName() + " " + getStudentById.getSurname());
+        }else {
+            System.out.println("Student not found");
         }
     }
 }

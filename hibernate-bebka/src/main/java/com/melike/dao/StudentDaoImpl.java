@@ -31,4 +31,11 @@ public class StudentDaoImpl implements StudentDao {
             return session.createQuery("from Student",Student.class).list();
         }
     }
+
+    @Override
+    public Student getStudentById(int id) {
+        try(Session session = HibernateUtil.getSessionFactory().openSession()) {
+            return session.get(Student.class,id);
+        }
+    }
 }
