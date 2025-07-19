@@ -1,6 +1,9 @@
 package com.melike;
 
+import com.melike.dao.StudentDao;
+import com.melike.dao.StudentDaoImpl;
 import com.melike.model.Student;
+import com.melike.service.StudentService;
 import com.melike.util.HibernateUtil;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
@@ -9,6 +12,7 @@ import org.hibernate.Transaction;
 // click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
 public class Main {
     public static void main(String[] args) {
+        /*
         Session session = HibernateUtil.getSessionFactory().openSession();
         Transaction transaction = null;
 
@@ -31,5 +35,10 @@ public class Main {
         } finally {
             session.close();
         }
+         */
+        StudentDao studentDao = new StudentDaoImpl();
+        StudentService studentService = new StudentService(studentDao);
+        studentService.createStudent("Berkan", "Sevil");
+
     }
 }
