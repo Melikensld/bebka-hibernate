@@ -36,6 +36,9 @@ public class Main {
          */
 
         //Update student
-        studentService.updateStudent(3, "Fatma", "Yıldız");
+        //studentService.updateStudent(3, "Fatma", "Yıldız");
+
+        //Delete Student
+        studentService.deleteStudent(2);
     }
 }

@@ -9,4 +9,5 @@ public interface StudentDao {
     List<Student> getAllStudents();
     Student getStudentById(int id);
     void updateStudent(Student student);
+    void deleteStudent(int id);
 }

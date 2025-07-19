@@ -39,4 +39,8 @@ public class StudentService {
             System.out.println("Student with ID " + id + " not found.");
         }
     }
+
+    public void deleteStudent(int id) {
+        studentDao.deleteStudent(id);
+    }
 }

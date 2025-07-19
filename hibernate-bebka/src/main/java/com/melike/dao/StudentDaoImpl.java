@@ -52,4 +52,24 @@ public class StudentDaoImpl implements StudentDao {
             }e.printStackTrace();
         }
     }
+
+    @Override
+    public void deleteStudent(int id) {
+        Transaction transaction = null;
+        try(Session session = HibernateUtil.getSessionFactory().openSession()) {
+            Student student = session.get(Student.class,id);
+            if(student != null) {
+                transaction = session.beginTransaction();
+                session.delete(student);
+                transaction.commit();
+            }else  {
+                System.out.println("Student with ID " + id + " not found.");
+            }
+        }catch (Exception e) {
+            if(transaction != null) {
+                transaction.rollback();
+                e.printStackTrace();
+            }
+        }
+    }
 }
