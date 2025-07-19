@@ -5,6 +5,8 @@ import com.melike.util.HibernateUtil;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 
+import java.util.List;
+
 public class StudentDaoImpl implements StudentDao {
 
     @Override
@@ -21,5 +23,12 @@ public class StudentDaoImpl implements StudentDao {
             e.printStackTrace();
         }
         return student;
+    }
+
+    @Override
+    public List<Student> getAllStudents() {
+        try(Session session = HibernateUtil.getSessionFactory().openSession()) {
+            return session.createQuery("from Student",Student.class).list();
+        }
     }
 }
