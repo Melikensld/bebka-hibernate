@@ -28,4 +28,15 @@ public class StudentService {
     public Student getStudentById(int id) {
         return studentDao.getStudentById(id);
     }
+
+    public void updateStudent(int id, String name, String surname) {
+        Student student = studentDao.getStudentById(id);
+        if(student != null) {
+            student.setName(name);
+            student.setSurname(surname);
+            studentDao.updateStudent(student);
+        }else  {
+            System.out.println("Student with ID " + id + " not found.");
+        }
+    }
 }

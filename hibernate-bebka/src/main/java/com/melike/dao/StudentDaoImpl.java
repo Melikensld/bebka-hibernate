@@ -38,4 +38,18 @@ public class StudentDaoImpl implements StudentDao {
             return session.get(Student.class,id);
         }
     }
+
+    @Override
+    public void updateStudent(Student student) {
+        Transaction transaction = null;
+        try(Session session = HibernateUtil.getSessionFactory().openSession()) {
+            transaction = session.beginTransaction();
+            session.update(student);
+            transaction.commit();
+        }catch (Exception e) {
+            if(transaction != null) {
+                transaction.rollback();
+            }e.printStackTrace();
+        }
+    }
 }

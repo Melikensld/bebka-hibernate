@@ -26,11 +26,16 @@ public class Main {
          */
 
         //getStudentById
+        /*
         Student getStudentById = studentService.getStudentById(3);
         if(getStudentById != null) {
             System.out.println(getStudentById.getName() + " " + getStudentById.getSurname());
         }else {
             System.out.println("Student not found");
         }
+         */
+
+        //Update student
+        studentService.updateStudent(3, "Fatma", "Yıldız");
     }
 }
